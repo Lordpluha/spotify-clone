@@ -1,21 +1,21 @@
 import {
-	Controller,
-	Get,
-	Post,
 	Body,
-	Param,
+	Controller,
 	Delete,
-	UseInterceptors,
-	UploadedFiles,
+	Get,
+	Param,
+	Post,
 	Query,
+	UploadedFiles,
+	UseInterceptors,
 } from '@nestjs/common'
 import { FileFieldsInterceptor } from '@nestjs/platform-express'
 import { ObjectId } from 'mongoose'
 
 import { TrackService } from './track.service'
 
+import { CreateCommentDto } from '../comment/dto/create-comment.dto'
 import { CreateTrackDto } from './dto/create-track.dto'
-import { CreateCommentDto } from './dto/create-comment.dto'
 
 @Controller('/tracks')
 export class TrackController {

@@ -1,14 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import mongoose, { HydratedDocument, ObjectId } from 'mongoose'
-import { Album } from 'src/album/schemas/album.schema'
+import { Comment } from 'src/comment/schemas/comment.schema'
+import { Track } from 'src/track/schemas/track.schema'
 import { Artist } from 'src/user/schemas/artist.schema'
-import { Comment } from '../../comment/schemas/comment.schema'
 
-export type TrackDocument = HydratedDocument<Track>
+export type TrackDocument = HydratedDocument<Album>
 
 @Schema()
-export class Track {
-	// @Prop({type: mongoose.Schema.Types.ObjectId})
+export class Album {
 	_id: ObjectId
 
 	@Prop()
@@ -17,30 +16,20 @@ export class Track {
 	@Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Artist' }] })
 	artists: Artist[]
 
-	@Prop()
-	text: string
-
-	@Prop()
-	listens: number
+	@Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Track' }] })
+	tracks: Track[]
 
 	@Prop()
 	cover: string
 
 	@Prop()
-	audio: string
+	listens: number
 
 	@Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }] })
 	comments: Comment[]
-
-	@Prop({ type: { type: mongoose.Schema.Types.ObjectId, ref: 'Album' } })
-	album: Album
-
-	@Prop()
-	duration: number
 
 	@Prop()
 	releaseDate: number
 }
 
-
-export const TrackSchema = SchemaFactory.createForClass(Track)
+export const AlbumSchema = SchemaFactory.createForClass(Album)
