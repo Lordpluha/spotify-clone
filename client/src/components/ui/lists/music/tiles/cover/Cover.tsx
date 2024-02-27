@@ -5,7 +5,7 @@ import styles from './Cover.module.scss'
 
 import { LinkWrapperBlock } from '../links/LinkWrapper'
 import type { TypeCoverProps } from './Cover.types'
-import { ReactNode } from 'react'
+import { CSSProperties, ReactNode } from 'react'
 
 const sizes = {
 	xs: 32,
@@ -22,22 +22,23 @@ const CoverWrapper = ({
 	children: ReactNode
 	link?: boolean
 	linkUrl?: string
+	styles: CSSProperties
 }) => (
 	<>
 		{link && linkUrl ? (
-			<LinkWrapperBlock to={linkUrl}>{children}</LinkWrapperBlock>
+			<LinkWrapperBlock to={linkUrl} styles={styles}>{children}</LinkWrapperBlock>
 		) : (
-			<div>{children}</div>
+			<div style={styles}>{children}</div>
 		)}
 	</>
 )
 
 export default function Cover(cover: TypeCoverProps) {
-	const { size, alt, url, link, linkUrl } = cover
+	const { size, alt, url, link, linkUrl, styles: cssRules } = cover
 	const classes = clsx(styles.cover, styles[size])
 
 	return (
-		<CoverWrapper link={link} linkUrl={linkUrl}>
+		<CoverWrapper link={link} linkUrl={linkUrl} styles={cssRules}>
 			{url ? (
 				<Image
 					src={url}

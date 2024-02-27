@@ -7,9 +7,9 @@ type TypeLinkWrapperProps = {
 	styles?: CSSProperties
 } & PropsWithChildren
 
-export const LinkWrapperBlock = ({ to='', children }: TypeLinkWrapperProps) => {
+export const LinkWrapperBlock = ({ to='', children, styles }: TypeLinkWrapperProps) => {
   return (
-	<Link href={to}>
+	<Link href={to} style={styles}>
 		{ children }
 	</Link>
   )
