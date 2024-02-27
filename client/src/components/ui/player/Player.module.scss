@@ -1,0 +1,10 @@
+.Player {
+	display: flex;
+	z-index: 10;
+	bottom: 0;
+	left: 0;
+	justify-content: center;
+	@apply bg-lighterBlack px-8;
+	align-items: center;
+	height: 15vh;
+}
