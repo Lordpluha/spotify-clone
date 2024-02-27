@@ -1,5 +1,4 @@
 import {
-	MouseEvent,
 	MutableRefObject,
 	useCallback,
 	useEffect,
@@ -11,14 +10,12 @@ import {
  */
 const useResizer = (
 	sidebarRef: MutableRefObject<HTMLDivElement>
-): [
-	sidebarWidth: number,
-	startResizing: any
-] => {
+): [sidebarWidth: number, startResizing: () => void] => {
 	const [isResizing, setIsResizing] = useState<boolean>(false)
 	const [sidebarWidth, setSidebarWidth] = useState<number>(268)
 
-	const startResizing: any = useCallback((mouseDownEvent: MouseEvent) => {
+	/** Func to activate resizer component watching to mouse */
+	const startResizing = useCallback(() => {
 		setIsResizing(true)
 	}, [])
 
@@ -26,14 +23,13 @@ const useResizer = (
 		setIsResizing(false)
 	}, [])
 
-	const resize: any = useCallback(
-		(mouseMoveEvent: MouseEvent) => {
-			if (isResizing) {
+	const resize = useCallback(
+		(mouseMoveEvent: globalThis.MouseEvent) => {
+			if (isResizing)
 				setSidebarWidth(
 					mouseMoveEvent.clientX -
 						sidebarRef.current.getBoundingClientRect().left
 				)
-			}
 		},
 		[isResizing, sidebarRef]
 	)
