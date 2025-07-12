@@ -9,7 +9,7 @@ import { Request } from 'express'
 import { JWTPayload } from './types'
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class RefreshGuard implements CanActivate {
   constructor(private jwtService: JwtService) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -17,18 +17,15 @@ export class AuthGuard implements CanActivate {
     const token = this.extractTokenFromCookie(request)
 
     if (!token) {
-      throw new UnauthorizedException('No authentication token found')
+      throw new UnauthorizedException('No refresh token found')
     }
 
     try {
       const payload = await this.jwtService.verifyAsync<JWTPayload>(token, {
         secret: process.env.JWT_SECRET
       })
-      request['user'] = payload
-      request[process.env.ACCESS_TOKEN_NAME!] = token
-      request[process.env.REFRESH_TOKEN_NAME!] = request.cookies[
-        process.env.REFRESH_TOKEN_NAME!
-      ] as string
+      request[process.env.REFRESH_TOKEN_NAME!] = token
+			request['user'] = payload
     } catch {
       throw new UnauthorizedException('Invalid or expired token')
     }
@@ -36,7 +33,7 @@ export class AuthGuard implements CanActivate {
   }
 
   private extractTokenFromCookie(request: Request): string | undefined {
-    const name = process.env.ACCESS_TOKEN_NAME!
+    const name = process.env.REFRESH_TOKEN_NAME!
     return request.cookies?.[name] as string | undefined
   }
 }
