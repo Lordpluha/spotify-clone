@@ -1,25 +1,22 @@
-import { User } from '@prisma/client'
+import { Album } from '@prisma/client'
 import { ApiProperty } from '@nestjs/swagger'
 
-export class UserEntity implements User {
+export class AlbumEntity implements Album {
   @ApiProperty()
   id: string
 
   @ApiProperty()
-  username: string
+  title: string
 
   @ApiProperty()
-  email: string
+  cover: string
 
   @ApiProperty()
-  password: string
-
-  @ApiProperty()
-  createdAt: Date
+  artistId: string
 
   @ApiProperty()
   description: string | null
 
   @ApiProperty()
-  avatar: string | null
+  createdAt: Date
 }
