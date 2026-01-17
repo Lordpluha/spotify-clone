@@ -1,19 +1,18 @@
 import type { SVGProps } from "react"
-export const ArrowrightIcon = (props: SVGProps<SVGSVGElement>) => (
+export const PlayingIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
     height="1em"
     fill="none"
-    viewBox="0 0 16 17"
+    viewBox="0 0 13 14"
     aria-hidden="true"
     focusable="false"
     {...props}
   >
     <path
       fill="currentColor"
-      d="M4.965 1.436a.75.75 0 0 0 0 1.059l6.466 6.466-6.466 6.465a.75.75 0 1 0 1.06 1.06L13.55 8.96 6.024 1.436a.75.75 0 0 0-1.059 0"
-      opacity={0.7}
+      d="M0 .7A.7.7 0 0 1 1.05.094l10.882 6.284a.7.7 0 0 1 0 1.21L1.05 13.874A.7.7 0 0 1 0 13.267z"
     />
   </svg>
 )
