@@ -1,15 +1,17 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import type { ComponentProps } from "react"
+import { useInputContext } from "./input-context"
 import { cn } from "@/lib/utils"
 
 export const inputVariants = cva(
-  "flex w-full rounded-md border px-3 py-2 text-base ring-offset-white placeholder:text-slate-500 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300",
+  "px-3 py-2 flex w-full rounded-md border text-base ring-offset-white placeholder:text-slate-500 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300",
   {
     variants: {
       variant: {
         default:
           "border-slate-200 bg-white text-slate-900 focus-visible:ring-slate-950 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
         contrast: "border-grey-500 bg-contrast text-textContrast focus-visible:ring-slate-950",
+        search: "bg-grey-900 text-grey-200 placeholder:text-grey-500 rounded-full h-12",
       },
     },
     defaultVariants: {
@@ -20,6 +22,33 @@ export const inputVariants = cva(
 
 export interface InputProps extends ComponentProps<"input">, VariantProps<typeof inputVariants> {}
 
-export const Input = ({ className, type, variant, ...props }: InputProps) => (
-  <input type={type} className={cn(inputVariants({ variant, className }))} {...props} />
-)
+export const Input = ({ className, type, variant, ...props }: InputProps) => {
+  const { setFocused, setValue } = useInputContext()
+
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    setFocused(true)
+    props.onFocus?.(e)
+  }
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    setFocused(false)
+    setValue(!!e.target.value)
+    props.onBlur?.(e)
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(!!e.target.value)
+    props.onChange?.(e)
+  }
+
+  return (
+    <input
+      type={type}
+      className={cn(inputVariants({ variant, className }))}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onChange={handleChange}
+      {...props}
+    />
+  )
+}

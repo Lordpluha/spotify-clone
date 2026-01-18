@@ -1,7 +1,4 @@
-import { PrismaPg } from '@prisma/adapter-pg'
 import { PrismaClient } from '@prisma/client'
-import 'dotenv/config'
-import { Pool } from 'pg'
 
 import { seedAlbumsWithTracks } from './albums.seed'
 import { seedArtists } from './artists.seed'
@@ -9,9 +6,7 @@ import { seedPlaylistsWithTracks } from './playlists.seed'
 import { seedTrackAlbumRelations, seedTracks } from './tracks.seed'
 import { seedUserLikedTracks, seedUsers } from './users.seed'
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL })
-const adapter = new PrismaPg(pool)
-const prisma = new PrismaClient({ adapter })
+const prisma = new PrismaClient()
 
 async function main() {
   try {
@@ -112,7 +107,6 @@ async function main() {
     console.error('❌ Error during seeding:', error)
   } finally {
     await prisma.$disconnect()
-    await pool.end()
   }
 }
 

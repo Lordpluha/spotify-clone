@@ -1,6 +1,6 @@
+import 'dotenv/config'
 import { PrismaPg } from '@prisma/adapter-pg'
 import { PrismaClient } from '@prisma/client'
-import 'dotenv/config'
 import { Pool } from 'pg'
 
 import { seedAlbums } from './albums.seed'
@@ -9,7 +9,9 @@ import { seedPlaylists, seedPlaylistTracks } from './playlists.seed'
 import { seedTrackAlbumRelations, seedTracks } from './tracks.seed'
 import { seedUserLikedTracks, seedUsers } from './users.seed'
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL })
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+})
 const adapter = new PrismaPg(pool)
 const prisma = new PrismaClient({ adapter })
 
