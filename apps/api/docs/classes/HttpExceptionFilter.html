@@ -113,7 +113,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Classes</li>
-  <li class="breadcrumb-item" >UpdateStreamingDto</li>
+  <li class="breadcrumb-item" >HttpExceptionFilter</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -137,7 +137,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/modules/tracks/dtos/update-streaming.dto.ts</code>
+            <code>src/common/filters/http-exception.filter.ts</code>
         </p>
 
 
@@ -147,7 +147,7 @@
                 <h3>Implements</h3>
             </p>
             <p class="comment">
-                        <code></code>
+                        <code>ExceptionFilter</code>
             </p>
 
 
@@ -155,29 +155,17 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+
                 <tr>
                     <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
+                        <h6><b>Methods</b></h6>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier"></span>
-                                <a href="#currentTime" >currentTime</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#isPlaying" >isPlaying</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#trackId" >trackId</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#userId" >userId</a>
+                                <a href="#catch" >catch</a>
                             </li>
                         </ul>
                     </td>
@@ -187,164 +175,97 @@
 
 
 
-
         </tbody>
     </table>
 </section>
 
 
-            <section data-compodoc="block-properties">
+
+            <section data-compodoc="block-methods">
     
-    <h3 id="inputs">
-        Properties
+    <h3 id="methods">
+        Methods
     </h3>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="currentTime"></a>
+                    <a name="catch"></a>
                     <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>currentTime</b></span>
-                        <a href="#currentTime"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>catch</b></span>
+                        <a href="#catch"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty({description: &#x27;Current playback time in seconds&#x27;})<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/modules/tracks/dtos/update-streaming.dto.ts:19</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="isPlaying"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>isPlaying</b></span>
-                        <a href="#isPlaying"><span class="icon ion-ios-link"></span></a>
-                    </span>
+<code>catch(exception: unknown, host: ArgumentsHost)</code>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty({description: &#x27;Whether the track is playing&#x27;})<br />
-                        </code>
-                    </td>
-                </tr>
+
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/modules/tracks/dtos/update-streaming.dto.ts:22</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="6"
+                                    class="link-to-prism">src/common/filters/http-exception.filter.ts:6</a></div>
                         </td>
                     </tr>
 
 
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="trackId"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>trackId</b></span>
-                        <a href="#trackId"><span class="icon ion-ios-link"></span></a>
-                    </span>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>exception</td>
+                                            <td>
+                                                        <code>unknown</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>host</td>
+                                            <td>
+                                                        <code>ArgumentsHost</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty({description: &#x27;Track ID being updated&#x27;})<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/modules/tracks/dtos/update-streaming.dto.ts:13</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="userId"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>userId</b></span>
-                        <a href="#userId"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty({description: &#x27;User ID who is updating the track&#x27;})<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/modules/tracks/dtos/update-streaming.dto.ts:16</a></div>
-                        </td>
-                    </tr>
-
-
         </tbody>
     </table>
 </section>
-
-
 
 
 
@@ -354,28 +275,85 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;
-import { z } from &#x27;zod&#x27;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from &#x27;@nestjs/common&#x27;
+import { Request, Response } from &#x27;express&#x27;
 
-export const UpdateStreamingSchema &#x3D; z.object({
-  trackId: z.string().uuid(),
-  userId: z.string().uuid(),
-  currentTime: z.number().min(0),
-  isPlaying: z.boolean(),
-})
+@Catch()
+export class HttpExceptionFilter implements ExceptionFilter {
+  catch(exception: unknown, host: ArgumentsHost) {
+    const ctx &#x3D; host.switchToHttp()
+    const response &#x3D; ctx.getResponse&lt;Response&gt;()
+    const request &#x3D; ctx.getRequest&lt;Request&gt;()
 
-export class UpdateStreamingDto implements z.infer&lt;typeof UpdateStreamingSchema&gt; {
-  @ApiProperty({ description: &#x27;Track ID being updated&#x27; })
-  trackId: string
+    let status &#x3D; HttpStatus.INTERNAL_SERVER_ERROR
+    let message &#x3D; &#x27;Internal server error&#x27;
+    let error &#x3D; &#x27;Internal Server Error&#x27;
 
-  @ApiProperty({ description: &#x27;User ID who is updating the track&#x27; })
-  userId: string
+    if (exception instanceof HttpException) {
+      status &#x3D; exception.getStatus()
+      const exceptionResponse &#x3D; exception.getResponse()
 
-  @ApiProperty({ description: &#x27;Current playback time in seconds&#x27; })
-  currentTime: number
+      if (typeof exceptionResponse &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        message &#x3D; exceptionResponse
+      } else if (typeof exceptionResponse &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) {
+        const responseObj &#x3D; exceptionResponse as Record&lt;string, any&gt;
+        message &#x3D; responseObj.message || message
+        error &#x3D; responseObj.error || error
+      }
+    } else if (exception instanceof Error) {
+      // Handle NotFoundError from serve-static/send
+      if (exception.constructor.name &#x3D;&#x3D;&#x3D; &#x27;NotFoundError&#x27; || exception.message &#x3D;&#x3D;&#x3D; &#x27;Not Found&#x27;) {
+        status &#x3D; HttpStatus.NOT_FOUND
+        message &#x3D; &#x27;Resource not found&#x27;
+        error &#x3D; &#x27;Not Found&#x27;
+      }
+      // Handle file system errors for static files
+      else if (exception.message.includes(&#x27;ENOENT&#x27;)) {
+        status &#x3D; HttpStatus.NOT_FOUND
+        message &#x3D; &#x27;Resource not found&#x27;
+        error &#x3D; &#x27;Not Found&#x27;
+      } else if (exception.message.includes(&#x27;EACCES&#x27;)) {
+        status &#x3D; HttpStatus.FORBIDDEN
+        message &#x3D; &#x27;Access denied&#x27;
+        error &#x3D; &#x27;Forbidden&#x27;
+      } else {
+        // Generic error - don&#x27;t expose internals
+        message &#x3D; &#x27;An unexpected error occurred&#x27;
+      }
+    }
 
-  @ApiProperty({ description: &#x27;Whether the track is playing&#x27; })
-  isPlaying: boolean
+    // Log error details internally (for debugging)
+    if (process.env.NODE_ENV !&#x3D;&#x3D; &#x27;production&#x27;) {
+      // Don&#x27;t log stack traces for common 404 errors
+      if (
+        status &#x3D;&#x3D;&#x3D; HttpStatus.NOT_FOUND &amp;&amp;
+        exception instanceof Error &amp;&amp;
+        exception.constructor.name &#x3D;&#x3D;&#x3D; &#x27;NotFoundError&#x27;
+      ) {
+        console.log(&#x60;[404] ${request.method} ${request.url}&#x60;)
+      } else if (status &gt;&#x3D; 500) {
+        // Log server errors with full details
+        console.error(&#x27;Exception caught:&#x27;, {
+          timestamp: new Date().toISOString(),
+          path: request.url,
+          method: request.method,
+          exception: exception instanceof Error ? exception.message : exception,
+          stack: exception instanceof Error ? exception.stack : undefined,
+        })
+      } else {
+        // Log other errors without stack trace
+        console.warn(&#x60;[${status}] ${request.method} ${request.url} - ${message}&#x60;)
+      }
+    }
+
+    response.status(status).json({
+      statusCode: status,
+      error,
+      message,
+      timestamp: new Date().toISOString(),
+      path: request.url,
+    })
+  }
 }
 </code></pre>
     </div>
@@ -415,7 +393,7 @@ export class UpdateStreamingDto implements z.infer&lt;typeof UpdateStreamingSche
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'UpdateStreamingDto.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'HttpExceptionFilter.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

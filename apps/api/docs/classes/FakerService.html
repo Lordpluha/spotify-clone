@@ -93,7 +93,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content guard">
+               <div class="content class">
                    <div class="content-data">
 
 
@@ -109,9 +109,11 @@
 
 
 
+
+
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Guards</li>
-    <li class="breadcrumb-item" >AuthGuard</li>
+  <li class="breadcrumb-item">Classes</li>
+  <li class="breadcrumb-item" >FakerService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -130,20 +132,27 @@
 </ul>
 
 <div class="tab-content">
-        <div class="tab-pane fade active in" id="info">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/infra/seeds/faker.service.ts</code>
+        </p>
+
+
             <p class="comment">
-                <h3>File</h3>
+                <h3>Description</h3>
             </p>
             <p class="comment">
-                <code>src/modules/auth/auth.guard.ts</code>
+                <p>Сервис для генерации фейковых данных</p>
+
             </p>
 
 
 
 
-
-
-                <section data-compodoc="block-index">
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -157,12 +166,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#canActivate" >canActivate</a>
+                                    <span class="modifier">Static</span>
+                                <a href="#generatePlaylists" >generatePlaylists</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#extractTokenFromCookie" >extractTokenFromCookie</a>
+                                    <span class="modifier">Static</span>
+                                <a href="#generateUsers" >generateUsers</a>
                             </li>
                         </ul>
                     </td>
@@ -176,80 +185,9 @@
     </table>
 </section>
 
-                <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(prisma: <a href="../injectables/PrismaService.html" target="_self">PrismaService</a>, reflector: Reflector, tokenService: <a href="../injectables/TokenService.html" target="_self">TokenService</a>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/modules/auth/auth.guard.ts:56</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>prisma</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/PrismaService.html" target="_self" >PrismaService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>reflector</td>
-                                                  
-                                                        <td>
-                                                                    <code>Reflector</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>tokenService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/TokenService.html" target="_self" >TokenService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
-                <section data-compodoc="block-methods">
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -258,32 +196,34 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="canActivate"></a>
+                    <a name="generatePlaylists"></a>
                     <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>canActivate</b></span>
-                        <a href="#canActivate"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Static</span>
+                        <span ><b>generatePlaylists</b></span>
+                        <a href="#generatePlaylists"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>canActivate(context: ExecutionContext)</code>
+                    <code>generatePlaylists(userIds: string[], count: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="63"
-                                    class="link-to-prism">src/modules/auth/auth.guard.ts:63</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="82"
+                                    class="link-to-prism">src/infra/seeds/faker.service.ts:82</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Генерирует данные плейлистов для пользователей</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -298,9 +238,21 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>context</td>
+                                                <td>userIds</td>
                                             <td>
-                                                        <code>ExecutionContext</code>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>count</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                             </td>
 
                                             <td>
@@ -313,7 +265,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+                            <b>Returns : </b>    <code>Array&lt;{ title: string; cover: string; description: string; isPublic: boolean; userId: string; }&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -327,32 +279,34 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="extractTokenFromCookie"></a>
+                    <a name="generateUsers"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
-                        <span ><b>extractTokenFromCookie</b></span>
-                        <a href="#extractTokenFromCookie"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Static</span>
+                        <span ><b>generateUsers</b></span>
+                        <a href="#generateUsers"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>extractTokenFromCookie(request: Request)</code>
+                    <code>generateUsers(count: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="126"
-                                    class="link-to-prism">src/modules/auth/auth.guard.ts:126</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="10"
+                                    class="link-to-prism">src/infra/seeds/faker.service.ts:10</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Генерирует данные пользователей</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -367,9 +321,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>request</td>
+                                                <td>count</td>
                                             <td>
-                                                        <code>Request</code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                             </td>
 
                                             <td>
@@ -382,7 +336,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>{ access_token: string; refresh_token: string; }</code>
+                            <b>Returns : </b>    <code>Array&lt;{ username: string; email: string; password: string; avatar: string; description: string; updatedAt: Date; }&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -393,148 +347,142 @@
         </tbody>
     </table>
 </section>
-        </div>
 
 
-        <div class="tab-pane fade  tab-source-code" id="source">
-            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PrismaService } from &#x27;@infra/prisma/prisma.service&#x27;
-import {
-  applyDecorators,
-  CanActivate,
-  ExecutionContext,
-  HttpStatus,
-  Injectable,
-  SetMetadata,
-  UnauthorizedException,
-  UseGuards,
-} from &#x27;@nestjs/common&#x27;
-import { Reflector } from &#x27;@nestjs/core&#x27;
-import { ApiCookieAuth, ApiResponse } from &#x27;@nestjs/swagger&#x27;
-import { Request } from &#x27;express&#x27;
-import { UNAUTHORIZED_ERRORS } from &#x27;./errors/unauthorized.errors&#x27;
-import { TokenService } from &#x27;./token.service&#x27;
-import { JWTPayload } from &#x27;./types&#x27;
 
-export type TokenRequirement &#x3D; &#x27;access&#x27; | &#x27;refresh&#x27;
-export const TOKEN_REQUIREMENT &#x3D; &#x27;tokenRequirement&#x27;
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { faker } from &#x27;@faker-js/faker&#x27;
 
 /**
- * Metadata wrapper to control AuthGuard behavior.
- * @param tokenRequirement
- * @returns Decorator function that sets the token requirement for the guard.
+ * Сервис для генерации фейковых данных
  */
-export function Auth(tokenRequirement: TokenRequirement &#x3D; &#x27;access&#x27;) {
-  return applyDecorators(
-    SetMetadata(TOKEN_REQUIREMENT, tokenRequirement),
-    ApiCookieAuth(
-      tokenRequirement &#x3D;&#x3D;&#x3D; &#x27;access&#x27;
-        ? process.env.ACCESS_TOKEN_NAME
-        : process.env.REFRESH_TOKEN_NAME,
-    ),
-    ApiResponse({
-      status: HttpStatus.UNAUTHORIZED,
-      description: &#x27;Unauthorized&#x27;,
-      schema: {
-        type: &#x27;object&#x27;,
-        properties: {
-          statusCode: { type: &#x27;number&#x27;, example: HttpStatus.UNAUTHORIZED },
-          message: {
-            type: &#x27;string&#x27;,
-            enum: Object.values(UNAUTHORIZED_ERRORS),
-            example: UNAUTHORIZED_ERRORS.INVALID_OR_EXPIRED_TOKEN,
-          },
-          error: { type: &#x27;string&#x27;, example: &#x27;Unauthorized&#x27; },
-        },
-      },
-    }),
-    UseGuards(AuthGuard),
-  )
-}
+export class FakerService {
+  /**
+   * Генерирует данные пользователей
+   */
+  static generateUsers(count: number) {
+    const users: Array&lt;{
+      username: string
+      email: string
+      password: string
+      avatar: string
+      description: string | null
+      updatedAt: Date
+    }&gt; &#x3D; []
 
-@Injectable()
-export class AuthGuard implements CanActivate {
-  constructor(
-    private prisma: PrismaService,
-    private reflector: Reflector,
-    private tokenService: TokenService,
-  ) {}
+    // Тестовый пользователь
+    users.push({
+      username: &#x27;testuser&#x27;,
+      email: &#x27;test@example.com&#x27;,
+      password: &#x27;password123&#x27;,
+      avatar: &#x27;https://i.pravatar.cc/150?img&#x3D;1&#x27;,
+      description: &#x27;Test user for automated testing&#x27;,
+      updatedAt: new Date(),
+    })
 
-  async canActivate(context: ExecutionContext): Promise&lt;boolean&gt; {
-    const tokenReq &#x3D; this.reflector.getAllAndOverride&lt;TokenRequirement&gt;(TOKEN_REQUIREMENT, [
-      context.getHandler(),
-      context.getClass(),
-    ])
+    const adjectives &#x3D; [
+      &#x27;Cool&#x27;,
+      &#x27;Amazing&#x27;,
+      &#x27;Epic&#x27;,
+      &#x27;Super&#x27;,
+      &#x27;Mega&#x27;,
+      &#x27;Ultra&#x27;,
+      &#x27;Pro&#x27;,
+      &#x27;Master&#x27;,
+      &#x27;Dark&#x27;,
+      &#x27;Light&#x27;,
+    ]
+    const nouns &#x3D; [
+      &#x27;Music&#x27;,
+      &#x27;Beat&#x27;,
+      &#x27;Rhythm&#x27;,
+      &#x27;Sound&#x27;,
+      &#x27;Voice&#x27;,
+      &#x27;Song&#x27;,
+      &#x27;Player&#x27;,
+      &#x27;Listener&#x27;,
+      &#x27;Fan&#x27;,
+      &#x27;Lover&#x27;,
+    ]
+    const descriptions &#x3D; [
+      &#x27;Music lover and playlist curator&#x27;,
+      &#x27;Always discovering new sounds&#x27;,
+      &#x27;Living life one song at a time&#x27;,
+      &#x27;Concert enthusiast&#x27;,
+      &#x27;Creating vibes through music&#x27;,
+    ]
 
-    const request &#x3D; context.switchToHttp().getRequest&lt;Request&gt;()
-    // Extract tokens ONLY from httpOnly cookies
-    const { access_token, refresh_token } &#x3D; this.extractTokenFromCookie(request)
+    for (let i &#x3D; 0; i &lt; count; i++) {
+      const username &#x3D;
+        &#x60;${faker.helpers.arrayElement(adjectives)}${faker.helpers.arrayElement(nouns)}${faker.number.int({ min: 1, max: 999 })}&#x60;.toLowerCase()
 
-    // 1) проверяем наличие нужных токенов
-    switch (tokenReq) {
-      case &#x27;access&#x27;:
-        if (!access_token)
-          throw new UnauthorizedException(UNAUTHORIZED_ERRORS.ACCESS_TOKEN_REQUIRED)
-        break
-      case &#x27;refresh&#x27;:
-        if (!refresh_token)
-          throw new UnauthorizedException(UNAUTHORIZED_ERRORS.REFRESH_TOKEN_REQUIRED)
-        break
-      default:
-        throw new UnauthorizedException(UNAUTHORIZED_ERRORS.INVALID_TOKEN_REQUIREMENT)
+      users.push({
+        username,
+        email: faker.internet.email().toLowerCase(),
+        password: faker.internet.password({ length: 8 }),
+        avatar: faker.image.avatar(),
+        description: faker.helpers.arrayElement([...descriptions, null, null]),
+        updatedAt: new Date(),
+      })
     }
 
-    try {
-      // 2) верификация
-      let payload: JWTPayload
-      if (access_token &amp;&amp; &#x27;access&#x27; &#x3D;&#x3D;&#x3D; tokenReq) {
-        payload &#x3D; await this.tokenService.verifyToken(access_token)
-      } else {
-        payload &#x3D; await this.tokenService.verifyToken(refresh_token!)
-      }
-
-      if (refresh_token) {
-        await this.tokenService.verifyToken(refresh_token)
-      }
-
-      // 3) получаем юзера
-      const user &#x3D; await this.prisma.user.findUnique({
-        where: { id: payload.sub },
-      })
-      if (!user) throw new UnauthorizedException(UNAUTHORIZED_ERRORS.USER_NOT_FOUND)
-
-      // 4) ищем сессию по всем пришедшим токенам
-      const session &#x3D; await this.prisma.session.findFirst({
-        where: {
-          access_token,
-          refresh_token,
-          userId: payload.sub,
-        },
-      })
-      if (!session) throw new UnauthorizedException(UNAUTHORIZED_ERRORS.SESSION_NOT_FOUND)
-
-      request[&#x27;user&#x27;] &#x3D; user
-      if (access_token) request[process.env.ACCESS_TOKEN_NAME!] &#x3D; access_token
-      if (refresh_token) request[process.env.REFRESH_TOKEN_NAME!] &#x3D; refresh_token
-    } catch {
-      throw new UnauthorizedException(UNAUTHORIZED_ERRORS.INVALID_OR_EXPIRED_TOKEN)
-    }
-
-    return true
+    return users
   }
 
-  private extractTokenFromCookie(request: Request) {
-    const access_token_name &#x3D; process.env.ACCESS_TOKEN_NAME!
-    const refresh_token_name &#x3D; process.env.REFRESH_TOKEN_NAME!
-    const access_token &#x3D; request.cookies?.[access_token_name] as string | undefined
-    const refresh_token &#x3D; request.cookies?.[refresh_token_name] as string | undefined
-    return { access_token, refresh_token }
+  /**
+   * Генерирует данные плейлистов для пользователей
+   */
+  static generatePlaylists(userIds: string[], count: number) {
+    const playlistTitles &#x3D; [
+      &#x27;My Favorites&#x27;,
+      &#x27;Chill Vibes&#x27;,
+      &#x27;Workout Mix&#x27;,
+      &#x27;Road Trip&#x27;,
+      &#x27;Study Music&#x27;,
+      &#x27;Party Time&#x27;,
+      &#x27;Morning Coffee&#x27;,
+      &#x27;Late Night&#x27;,
+      &#x27;Feel Good&#x27;,
+      &#x27;Throwback Hits&#x27;,
+      &#x27;New Discoveries&#x27;,
+      &#x27;Summer Vibes&#x27;,
+      &#x27;Focus Flow&#x27;,
+      &#x27;Energy Boost&#x27;,
+      &#x27;Relax &amp; Unwind&#x27;,
+    ]
+
+    const playlists: Array&lt;{
+      title: string
+      cover: string
+      description: string
+      isPublic: boolean
+      userId: string
+    }&gt; &#x3D; []
+
+    for (let i &#x3D; 0; i &lt; count; i++) {
+      const randomUser &#x3D; faker.helpers.arrayElement(userIds)
+      const isPublic &#x3D; faker.datatype.boolean({ probability: 0.7 })
+
+      playlists.push({
+        title: &#x60;${faker.helpers.arrayElement(playlistTitles)} ${faker.number.int({ min: 1, max: 99 })}&#x60;,
+        cover: faker.image.url({ width: 800, height: 800 }),
+        description: faker.lorem.sentence(),
+        isPublic,
+        userId: randomUser,
+      })
+    }
+
+    return playlists
   }
 }
 </code></pre>
-        </div>
+    </div>
 </div>
-
-
 
 
 
@@ -569,8 +517,8 @@ export class AuthGuard implements CanActivate {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'guard';
-            var COMPODOC_CURRENT_PAGE_URL = 'AuthGuard.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'FakerService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

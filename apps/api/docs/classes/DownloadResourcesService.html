@@ -93,7 +93,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content class">
                    <div class="content-data">
 
 
@@ -107,9 +107,13 @@
 
 
 
+
+
+
+
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >AuthService</li>
+  <li class="breadcrumb-item">Classes</li>
+  <li class="breadcrumb-item" >DownloadResourcesService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -133,9 +137,17 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/modules/auth/auth.service.ts</code>
+            <code>src/infra/seeds/download-resources.service.ts</code>
         </p>
 
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Сервис для скачивания ресурсов</p>
+
+            </p>
 
 
 
@@ -144,6 +156,25 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#coversDir" >coversDir</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#tracksDir" >tracksDir</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -154,20 +185,17 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
                                     <span class="modifier">Async</span>
-                                <a href="#loginUser" >loginUser</a>
+                                <a href="#downloadFile" >downloadFile</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#logout" >logout</a>
+                                <a href="#downloadTrackResources" >downloadTrackResources</a>
                             </li>
                             <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#refresh" >refresh</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#registerUser" >registerUser</a>
+                                    <span class="modifier">Private</span>
+                                <a href="#sanitizeFilename" >sanitizeFilename</a>
                             </li>
                         </ul>
                     </td>
@@ -187,12 +215,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(usersService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>, jwtService: JwtService, prisma: <a href="../injectables/PrismaService.html" target="_self">PrismaService</a>, tokenService: <a href="../injectables/TokenService.html" target="_self">TokenService</a>)</code>
+<code>constructor(storageBase: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/modules/auth/auth.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/infra/seeds/download-resources.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -210,46 +238,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>usersService</td>
+                                                        <td>storageBase</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>jwtService</td>
-                                                  
-                                                        <td>
-                                                                    <code>JwtService</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>prisma</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/PrismaService.html" target="_self" >PrismaService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>tokenService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/TokenService.html" target="_self" >TokenService</a></code>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -266,6 +258,67 @@
         </table>
 </section>
 
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="coversDir"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>coversDir</b></span>
+                        <a href="#coversDir"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/infra/seeds/download-resources.service.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tracksDir"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>tracksDir</b></span>
+                        <a href="#tracksDir"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/infra/seeds/download-resources.service.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
             <section data-compodoc="block-methods">
     
     <h3 id="methods">
@@ -275,32 +328,35 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="loginUser"></a>
+                    <a name="downloadFile"></a>
                     <span class="name">
+                            <span class="modifier">Private</span>
                             <span class="modifier">Async</span>
-                        <span ><b>loginUser</b></span>
-                        <a href="#loginUser"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>downloadFile</b></span>
+                        <a href="#downloadFile"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>loginUser(email: <a href="../classes/UserEntity.html" target="_self">UserEntity</a>, password: <a href="../classes/UserEntity.html" target="_self">UserEntity</a>)</code>
+                    <code>downloadFile(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, filepath: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/modules/auth/auth.service.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="28"
+                                    class="link-to-prism">src/infra/seeds/download-resources.service.ts:28</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Скачивает файл по URL и возвращает размер</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -315,9 +371,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>email</td>
+                                                <td>url</td>
                                             <td>
-                                                            <code><a href="../classes/UserEntity.html" target="_self" >UserEntity</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -327,157 +383,7 @@
 
                                         </tr>
                                         <tr>
-                                                <td>password</td>
-                                            <td>
-                                                            <code><a href="../classes/UserEntity.html" target="_self" >UserEntity</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="logout"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>logout</b></span>
-                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>logout(userId: <a href="../classes/SessionEntity.html" target="_self">SessionEntity</a>, refresh_token: <a href="../classes/SessionEntity.html" target="_self">SessionEntity</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="79"
-                                    class="link-to-prism">src/modules/auth/auth.service.ts:79</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>userId</td>
-                                            <td>
-                                                            <code><a href="../classes/SessionEntity.html" target="_self" >SessionEntity</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>refresh_token</td>
-                                            <td>
-                                                            <code><a href="../classes/SessionEntity.html" target="_self" >SessionEntity</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="refresh"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>refresh</b></span>
-                        <a href="#refresh"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>refresh(refresh_token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="62"
-                                    class="link-to-prism">src/modules/auth/auth.service.ts:62</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>refresh_token</td>
+                                                <td>filepath</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -492,7 +398,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -506,32 +412,34 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="registerUser"></a>
+                    <a name="downloadTrackResources"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>registerUser</b></span>
-                        <a href="#registerUser"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>downloadTrackResources</b></span>
+                        <a href="#downloadTrackResources"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>registerUser(registrationDto: <a href="../classes/RegistrationDto.html" target="_self">RegistrationDto</a>)</code>
+                    <code>downloadTrackResources(ncsSong: NCSSong)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/modules/auth/auth.service.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/infra/seeds/download-resources.service.ts:83</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Скачивает аудио и обложку трека из NCS</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -546,9 +454,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>registrationDto</td>
+                                                <td>ncsSong</td>
                                             <td>
-                                                            <code><a href="../classes/RegistrationDto.html" target="_self" >RegistrationDto</a></code>
+                                                        <code>NCSSong</code>
                                             </td>
 
                                             <td>
@@ -561,7 +469,78 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sanitizeFilename"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>sanitizeFilename</b></span>
+                        <a href="#sanitizeFilename"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>sanitizeFilename(filename: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/infra/seeds/download-resources.service.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Генерирует безопасное имя файла</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filename</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                         </div>
                             <div class="io-description">
@@ -573,115 +552,186 @@
     </table>
 </section>
 
+
+
+
+
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PrismaService } from &#x27;@infra/prisma/prisma.service&#x27;
-import { ConflictException, Injectable, UnauthorizedException } from &#x27;@nestjs/common&#x27;
-import { JwtService } from &#x27;@nestjs/jwt&#x27;
-import { UserEntity } from &#x27;../users/entities&#x27;
-import { UsersService } from &#x27;../users/users.service&#x27;
-import { RegistrationDto } from &#x27;./dtos&#x27;
-import { SessionEntity } from &#x27;./entities&#x27;
-import { TokenService } from &#x27;./token.service&#x27;
-import { JWTPayload } from &#x27;./types&#x27;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import * as fs from &#x27;node:fs&#x27;
+import { createWriteStream } from &#x27;node:fs&#x27;
+import * as path from &#x27;node:path&#x27;
+import { Readable } from &#x27;node:stream&#x27;
+import { pipeline } from &#x27;node:stream/promises&#x27;
+import type { Song as NCSSong } from &#x27;@spotify/ncs-parser&#x27;
+import config from &#x27;./config&#x27;
 
-@Injectable()
-export class AuthService {
-  constructor(
-    private usersService: UsersService,
-    private jwtService: JwtService,
-    private prisma: PrismaService,
-    private tokenService: TokenService,
-  ) {}
+/**
+ * Сервис для скачивания ресурсов
+ */
+export class DownloadResourcesService {
+  private tracksDir: string
+  private coversDir: string
 
-  async registerUser(registrationDto: RegistrationDto) {
-    const user &#x3D; await this.usersService.getByEmail(registrationDto.email)
+  constructor(storageBase: string) {
+    this.tracksDir &#x3D; path.join(storageBase, config.storagePaths.tracks)
+    this.coversDir &#x3D; path.join(storageBase, config.storagePaths.covers)
 
-    if (user) {
-      throw new ConflictException(&#x27;User with this email already exists&#x27;)
-    }
-
-    await this.usersService.create({
-      username: registrationDto.username,
-      email: registrationDto.email,
-      password: registrationDto.password,
-      avatar: null,
-      description: null,
-      updatedAt: new Date(),
-    })
+    // Создаём директории
+    fs.mkdirSync(this.tracksDir, { recursive: true })
+    fs.mkdirSync(this.coversDir, { recursive: true })
   }
 
-  async loginUser(email: UserEntity[&#x27;email&#x27;], password: UserEntity[&#x27;password&#x27;]) {
-    const user &#x3D; await this.usersService.getByEmail_UNSECURE(email)
-    if (!user || user?.password !&#x3D;&#x3D; password) {
-      throw new UnauthorizedException({
-        message: &#x27;Invalid credentials&#x27;,
+  /**
+   * Скачивает файл по URL и возвращает размер
+   */
+  private async downloadFile(
+    url: string,
+    filepath: string,
+  ): Promise&lt;{ success: boolean; size?: number }&gt; {
+    try {
+      console.log(&#x60;      🔗 URL: ${url}&#x60;)
+      console.log(&#x60;      💾 Saving to: ${filepath}&#x60;)
+
+      const response &#x3D; await fetch(url, {
+        headers: {
+          &#x27;User-Agent&#x27;: &#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36&#x27;,
+        },
+        signal: AbortSignal.timeout(config.downloadTimeout),
       })
+
+      if (!response.ok) {
+        throw new Error(&#x60;HTTP error! status: ${response.status}&#x60;)
+      }
+
+      if (!response.body) {
+        throw new Error(&#x27;Response body is null&#x27;)
+      }
+
+      const nodeStream &#x3D; Readable.fromWeb(
+        response.body as unknown as import(&#x27;stream/web&#x27;).ReadableStream,
+      )
+      const fileStream &#x3D; createWriteStream(filepath)
+
+      await pipeline(nodeStream, fileStream)
+
+      const stats &#x3D; fs.statSync(filepath)
+      console.log(&#x60;      ✅ File saved: ${(stats.size / 1024 / 1024).toFixed(2)} MB&#x60;)
+
+      return { success: true, size: stats.size }
+    } catch (error) {
+      console.error(
+        &#x60;    ⚠️  Failed to download file: ${error instanceof Error ? error.message : error}&#x60;,
+      )
+      return { success: false }
+    }
+  }
+
+  /**
+   * Генерирует безопасное имя файла
+   */
+  private sanitizeFilename(filename: string): string {
+    return filename
+      .replace(/[^a-z0-9_.-]/gi, &#x27;_&#x27;)
+      .replace(/_+/g, &#x27;_&#x27;)
+      .toLowerCase()
+  }
+
+  /**
+   * Скачивает аудио и обложку трека из NCS
+   */
+  async downloadTrackResources(ncsSong: NCSSong) {
+    const trackId &#x3D; ncsSong.id || Date.now().toString()
+    const sanitizedTitle &#x3D; this.sanitizeFilename(ncsSong.name)
+
+    let audioFilename: string | null &#x3D; null
+    let coverFilename: string | null &#x3D; null
+    let audioSize: number | undefined
+    let coverSize: number | undefined
+    let instrumentalSize: number | undefined
+
+    // Скачиваем обложку
+    if (ncsSong.coverUrl) {
+      const coverExt &#x3D; path.extname(new URL(ncsSong.coverUrl).pathname) || &#x27;.jpg&#x27;
+      coverFilename &#x3D; &#x60;${sanitizedTitle}_${trackId}${coverExt}&#x60;
+      const coverPath &#x3D; path.join(this.coversDir, coverFilename)
+
+      console.log(&#x27;    📥 Downloading cover...&#x27;)
+      const result &#x3D; await this.downloadFile(ncsSong.coverUrl, coverPath)
+      if (result.success) {
+        console.log(&#x27;    ✅ Cover saved&#x27;)
+        coverSize &#x3D; result.size
+      } else {
+        coverFilename &#x3D; null
+      }
     }
 
-    const access_token &#x3D; await this.tokenService.generateAccessToken(user.id, user.username)
-    const refresh_token &#x3D; await this.tokenService.generateRefreshToken(user.id, user.username)
+    // Скачиваем основной аудио файл (regular)
+    if (ncsSong.download.regular) {
+      audioFilename &#x3D; &#x60;${sanitizedTitle}_${trackId}.mp3&#x60;
+      const audioPath &#x3D; path.join(this.tracksDir, audioFilename)
 
-    const session &#x3D; await this.prisma.session.create({
-      data: {
-        access_token,
-        userId: user.id,
-        refresh_token,
-      },
-    })
+      console.log(&#x27;    📥 Downloading audio file (regular)...&#x27;)
+      const result &#x3D; await this.downloadFile(ncsSong.download.regular, audioPath)
+      if (result.success) {
+        console.log(&#x27;    ✅ Regular version saved&#x27;)
+        audioSize &#x3D; result.size
+      } else {
+        audioFilename &#x3D; null
+      }
+    }
+
+    // Если regular нет, пробуем preview
+    if (!audioFilename &amp;&amp; ncsSong.previewUrl) {
+      audioFilename &#x3D; &#x60;${sanitizedTitle}_${trackId}_preview.mp3&#x60;
+      const previewPath &#x3D; path.join(this.tracksDir, audioFilename)
+
+      console.log(&#x27;    📥 Downloading preview...&#x27;)
+      const result &#x3D; await this.downloadFile(ncsSong.previewUrl, previewPath)
+      if (result.success) {
+        audioSize &#x3D; result.size
+      } else {
+        // Fallback на оригинальный URL
+        audioFilename &#x3D; ncsSong.previewUrl
+        console.log(&#x27;    ⚠️  Using original preview URL as fallback&#x27;)
+      }
+    }
+
+    // Скачиваем instrumental версию
+    let instrumentalFilename: string | null &#x3D; null
+    if (ncsSong.download.instrumental) {
+      instrumentalFilename &#x3D; &#x60;${sanitizedTitle}_${trackId}_instrumental.mp3&#x60;
+      const instrumentalPath &#x3D; path.join(this.tracksDir, instrumentalFilename)
+
+      console.log(&#x27;    📥 Downloading instrumental version...&#x27;)
+      const result &#x3D; await this.downloadFile(ncsSong.download.instrumental, instrumentalPath)
+      if (result.success) {
+        console.log(&#x27;    ✅ Instrumental version saved&#x27;)
+        instrumentalSize &#x3D; result.size
+      } else {
+        instrumentalFilename &#x3D; null
+      }
+    }
+
+    // Примерная длительность трека (3-5 минут в секундах)
+    const duration &#x3D; Math.floor(Math.random() * (300 - 180 + 1)) + 180
 
     return {
-      access_token: session.access_token,
-      refresh_token: session.refresh_token,
+      audioFilename,
+      coverFilename,
+      instrumentalFilename,
+      audioSize,
+      coverSize,
+      instrumentalSize,
+      duration,
     }
-  }
-
-  async refresh(refresh_token: string) {
-    try {
-      const payload &#x3D; await this.jwtService.verifyAsync&lt;JWTPayload&gt;(refresh_token, {
-        secret: process.env.REFRESH_TOKEN_SECRET,
-      })
-      const user &#x3D; await this.usersService.getByUsername(payload.username)
-      if (!user) {
-        throw new UnauthorizedException(&#x27;Invalid refresh token&#x27;)
-      }
-      return {
-        access_token: await this.tokenService.generateAccessToken(user.id, user.username),
-      }
-    } catch {
-      throw new UnauthorizedException(&#x27;Invalid refresh token&#x27;)
-    }
-  }
-
-  async logout(userId: SessionEntity[&#x27;userId&#x27;], refresh_token: SessionEntity[&#x27;refresh_token&#x27;]) {
-    const user &#x3D; await this.usersService.findById(userId)
-    if (!user) {
-      throw new UnauthorizedException(&#x27;Invalid access token&#x27;)
-    }
-    const session &#x3D; await this.prisma.session.findFirst({
-      where: {
-        userId: user.id,
-        refresh_token,
-      },
-    })
-
-    await this.prisma.session.delete({
-      where: {
-        id: session?.id,
-      },
-    })
   }
 }
 </code></pre>
     </div>
-
 </div>
-
-
-
-
 
 
 
@@ -716,8 +766,8 @@ export class AuthService {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'AuthService.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'DownloadResourcesService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
