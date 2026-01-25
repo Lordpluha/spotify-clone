@@ -1,9 +1,8 @@
 ---
 sidebar_position: 1
-slug: /
 ---
 
-# Welcome to Spotify Clone
+# Introduction
 
 **Spotify Clone** is a full-featured music streaming platform built from scratch using modern technologies. This project demonstrates best practices in monorepo architecture, microservices, and cross-platform development.
 
