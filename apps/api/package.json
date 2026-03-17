@@ -48,7 +48,7 @@
     "@spotify/ncs-parser": "workspace:*",
     "bullmq": "^5.67.3",
     "cookie-parser": "^1.4.7",
-    "music-metadata": "^11.10.6",
+    "music-metadata": "^11.12.3",
     "nestjs-zod": "^5.1.1",
     "pg": "^8.17.1",
     "reflect-metadata": "^0.2.2",
