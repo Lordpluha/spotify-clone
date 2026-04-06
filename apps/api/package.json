@@ -35,7 +35,7 @@
     "@nestjs/bullmq": "^11.0.4",
     "@nestjs/common": "^11.1.12",
     "@nestjs/config": "^4.0.3",
-    "@nestjs/core": "^11.1.12",
+    "@nestjs/core": "^11.1.18",
     "@nestjs/jwt": "^11.0.2",
     "@nestjs/platform-express": "^11.1.12",
     "@nestjs/platform-socket.io": "^11.1.12",
