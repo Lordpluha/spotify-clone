@@ -1,8 +1,6 @@
-import { exec } from "node:child_process"
-import fs from "node:fs/promises"
-import { promisify } from "node:util"
-
-const execAsync = promisify(exec)
+import fs from 'node:fs/promises'
+import { execa } from 'execa'
+import ffmpegPath from 'ffmpeg-static'
 
 /**
  * Convert video audio to AAC format
@@ -15,78 +13,99 @@ const execAsync = promisify(exec)
  * @returns {Promise<{input: string, output: string, inputSize: string, outputSize: string}>}
  */
 export async function convertVideo({
-	input,
-	output,
-	bitrate = "128k",
-	quality = 1,
-	profile = "aac_low",
+  input,
+  output,
+  bitrate = '128k',
+  quality = 1,
+  profile = 'aac_low',
 }) {
-	// Validate input file exists
-	try {
-		await fs.access(input)
-	} catch (error) {
-		throw new Error(`Input file not found: ${input}`)
-	}
+  if (!ffmpegPath) {
+    throw new Error('FFmpeg binary not found. Ensure ffmpeg-static is installed correctly.')
+  }
 
-	// Determine output path
-	const outputPath = output || input.replace(/\.[^.]+$/, ".m4a")
+  // Validate input file exists
+  try {
+    await fs.access(input)
+  } catch (error) {
+    throw new Error(`Input file not found: ${input}`)
+  }
 
-	// Validate bitrate
-	const validBitrates = ["64k", "96k", "128k", "192k", "256k", "320k"]
-	if (!validBitrates.includes(bitrate)) {
-		console.warn(
-			`⚠️  Warning: Unusual bitrate "${bitrate}". Common values: ${validBitrates.join(", ")}`,
-		)
-	}
+  // Determine output path
+  const outputPath = output || input.replace(/\.[^.]+$/, '.m4a')
 
-	// Validate quality
-	if (quality < 0.1 || quality > 2) {
-		throw new Error("Quality must be between 0.1 and 2")
-	}
+  // Validate bitrate
+  const validBitrates = ['64k', '96k', '128k', '192k', '256k', '320k']
+  if (!validBitrates.includes(bitrate)) {
+    console.warn(
+      `⚠️  Warning: Unusual bitrate "${bitrate}". Common values: ${validBitrates.join(', ')}`,
+    )
+  }
 
-	// Validate profile
-	const validProfiles = ["aac_low", "aac_he", "aac_he_v2"]
-	if (!validProfiles.includes(profile)) {
-		throw new Error(`Invalid AAC profile. Must be one of: ${validProfiles.join(", ")}`)
-	}
+  // Validate quality
+  if (quality < 0.1 || quality > 2) {
+    throw new Error('Quality must be between 0.1 and 2')
+  }
 
-	console.log("🎬 Converting video audio to AAC...")
-	console.log(`   Input:  ${input}`)
-	console.log(`   Output: ${outputPath}`)
-	console.log(`   Bitrate: ${bitrate}`)
-	console.log(`   Quality: ${quality}`)
-	console.log(`   Profile: ${profile}`)
+  // Validate profile
+  const validProfiles = ['aac_low', 'aac_he', 'aac_he_v2']
+  if (!validProfiles.includes(profile)) {
+    throw new Error(`Invalid AAC profile. Must be one of: ${validProfiles.join(', ')}`)
+  }
 
-	// Build FFmpeg command
-	// -vn: no video output (audio only)
-	// -c:a aac: use AAC codec
-	// -b:a: audio bitrate
-	// -q:a: quality setting
-	// -profile:a: AAC profile
-	const command = `ffmpeg -i "${input}" -vn -c:a aac -b:a ${bitrate} -q:a ${quality} -profile:a ${profile} -y "${outputPath}"`
+  console.log('🎬 Converting video audio to AAC...')
+  console.log(`   Input:  ${input}`)
+  console.log(`   Output: ${outputPath}`)
+  console.log(`   Bitrate: ${bitrate}`)
+  console.log(`   Quality: ${quality}`)
+  console.log(`   Profile: ${profile}`)
 
-	try {
-		await execAsync(command)
+  // Build FFmpeg args
+  // -vn: no video output (audio only)
+  // -c:a aac: use AAC codec
+  // -b:a: audio bitrate
+  // -q:a: quality setting
+  // -profile:a: AAC profile
+  const args = [
+    '-hide_banner',
+    '-loglevel',
+    'error',
+    '-i',
+    input,
+    '-vn',
+    '-c:a',
+    'aac',
+    '-b:a',
+    bitrate,
+    '-q:a',
+    String(quality),
+    '-profile:a',
+    profile,
+    '-y',
+    outputPath,
+  ]
 
-		// Get file sizes
-		const inputStats = await fs.stat(input)
-		const outputStats = await fs.stat(outputPath)
-		const inputSize = formatBytes(inputStats.size)
-		const outputSize = formatBytes(outputStats.size)
+  try {
+    await execa(ffmpegPath, args)
 
-		console.log("✅ Conversion complete!")
-		console.log(`   Input size:  ${inputSize}`)
-		console.log(`   Output size: ${outputSize}`)
+    // Get file sizes
+    const inputStats = await fs.stat(input)
+    const outputStats = await fs.stat(outputPath)
+    const inputSize = formatBytes(inputStats.size)
+    const outputSize = formatBytes(outputStats.size)
 
-		return {
-			input,
-			output: outputPath,
-			inputSize,
-			outputSize,
-		}
-	} catch (error) {
-		throw new Error(`FFmpeg error: ${error.message}`)
-	}
+    console.log('✅ Conversion complete!')
+    console.log(`   Input size:  ${inputSize}`)
+    console.log(`   Output size: ${outputSize}`)
+
+    return {
+      input,
+      output: outputPath,
+      inputSize,
+      outputSize,
+    }
+  } catch (error) {
+    throw new Error(`FFmpeg error: ${error.message}`)
+  }
 }
 
 /**
@@ -95,9 +114,9 @@ export async function convertVideo({
  * @returns {string}
  */
 function formatBytes(bytes) {
-	if (bytes === 0) return "0 B"
-	const k = 1024
-	const sizes = ["B", "KB", "MB", "GB"]
-	const i = Math.floor(Math.log(bytes) / Math.log(k))
-	return `${Number.parseFloat((bytes / k ** i).toFixed(2))} ${sizes[i]}`
+  if (bytes === 0) return '0 B'
+  const k = 1024
+  const sizes = ['B', 'KB', 'MB', 'GB']
+  const i = Math.floor(Math.log(bytes) / Math.log(k))
+  return `${Number.parseFloat((bytes / k ** i).toFixed(2))} ${sizes[i]}`
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 
 interface ProgressiveStreamingOptions {
   chunkSize?: number // Size of each chunk in bytes
@@ -66,8 +66,8 @@ export const useProgressiveAudioStreaming = (
         console.log(`✓ Chunk loaded: ${arrayBuffer.byteLength} bytes`)
 
         return arrayBuffer
-      } catch (error: any) {
-        if (error.name === 'AbortError') {
+      } catch (error) {
+        if (error instanceof Error && error.name === 'AbortError') {
           console.log('Chunk fetch aborted')
         } else {
           console.error('Error fetching chunk:', error)
@@ -176,7 +176,7 @@ export const useProgressiveAudioStreaming = (
       })
 
       const contentLength = headResponse.headers.get('content-length')
-      fileSizeRef.current = contentLength ? parseInt(contentLength) : 0
+      fileSizeRef.current = contentLength ? parseInt(contentLength, 10) : 0
 
       if (fileSizeRef.current === 0) {
         console.error('Could not determine file size')

@@ -1,10 +1,13 @@
 import { ArtistEntity } from '@modules/artists'
 import { ArtistAuth } from '@modules/artists-auth/artists-auth.guard'
+import { UserEntity } from '@modules/users'
+import { UserAuth } from '@modules/users-auth/users-auth.guard'
 import {
   BadRequestException,
   Body,
   Controller,
   Get,
+  HttpStatus,
   Param,
   ParseIntPipe,
   ParseUUIDPipe,
@@ -12,13 +15,14 @@ import {
   Put,
   Query,
   Req,
+  Res,
   UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common'
 import { FileFieldsInterceptor } from '@nestjs/platform-express'
-import { ApiExtraModels, ApiTags } from '@nestjs/swagger'
+import { ApiExtraModels, ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger'
 import { randomUUID } from 'crypto'
-import { Request } from 'express'
+import { Request, Response } from 'express'
 import { diskStorage } from 'multer'
 import { ZodValidationPipe } from 'nestjs-zod'
 import { extname } from 'path'
@@ -56,6 +60,31 @@ export class TracksController {
   @Get(':id')
   getById(@Param('id', ParseUUIDPipe) id: TrackEntity['id']) {
     return this.tracksService.findTrackById(id)
+  }
+
+  @UserAuth()
+  @Get('stream/:id')
+  async streamTrack(
+    @Param('id', ParseUUIDPipe) id: TrackEntity['id'],
+    @Req() req: Request,
+    @Res() res: Response,
+  ) {
+    const range = req.headers.range
+    const streamData = await this.tracksService.getTrackStream(id, range)
+
+    res.status(streamData.isPartial ? 206 : 200)
+    res.set({
+      'Content-Type': streamData.contentType,
+      'Accept-Ranges': 'bytes',
+      'Content-Length': streamData.contentLength,
+      ...(streamData.isPartial
+        ? {
+            'Content-Range': `bytes ${streamData.start}-${streamData.end}/${streamData.fileSize}`,
+          }
+        : {}),
+    })
+
+    return streamData.stream.pipe(res)
   }
 
   @PostTrackSwagger()
@@ -165,5 +194,29 @@ export class TracksController {
     const coverFile = files?.cover?.[0]
 
     return this.tracksService.update(id, createTrackDto, audioFile, coverFile)
+  }
+
+  @ApiOperation({ summary: 'Get liked tracks of the authenticated user' })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    schema: {
+      type: 'array',
+      items: { $ref: '#/components/schemas/TrackEntity' },
+    },
+  })
+  @ApiQuery({ name: 'page', required: false, type: Number })
+  @ApiQuery({ name: 'limit', required: false, type: Number })
+  @UserAuth()
+  @Get('liked')
+  getLikedTracks(
+    @Req() req: Request,
+    @Query('page', new ParseIntPipe({ optional: true })) page?: number,
+    @Query('limit', new ParseIntPipe({ optional: true })) limit?: number,
+  ) {
+    const artist = req['user'] as UserEntity
+    return this.tracksService.findLikedTracks(artist.id, {
+      page,
+      limit,
+    })
   }
 }
