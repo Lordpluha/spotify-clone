@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@shared/api/client'
+import { showApiErrorToast } from '@shared/api/feedback'
 import { ROUTES } from '@shared/routes'
 import { SocialsAuthDivider } from '@shared/ui'
 import {
@@ -22,7 +23,7 @@ import {
 } from '@spotify/ui-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import type { ComponentProps, FC } from 'react'
+import type { ComponentProps } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import {
   type RegistrationFormData,
@@ -34,10 +35,10 @@ interface SignUpModalProps extends ComponentProps<typeof Modal> {
   onSwitchToLogin?: () => void
 }
 
-export const SignUpModal: FC<SignUpModalProps> = ({
+export const SignUpModal = ({
   onSwitchToLogin,
   ...modalProps
-}) => {
+}: SignUpModalProps) => {
   const router = useRouter()
 
   const { mutate: registerMutate, isPending: isRegistering } = useMutation(
@@ -53,7 +54,10 @@ export const SignUpModal: FC<SignUpModalProps> = ({
         }
       },
       onError: (error) => {
-        toast.error(`Registration error: ${JSON.stringify(error)}`)
+        showApiErrorToast(error, 'Unable to create account. Please try again.')
+      },
+      meta: {
+        suppressErrorToast: true,
       },
     },
   )

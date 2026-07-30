@@ -1,4 +1,3 @@
-import type { FC } from 'react'
 import { AboutArtist } from './AboutArtist'
 import { CurrentPlaylist } from './CurrentPlaylist'
 import { NextInQueue } from './NextInQueue'
@@ -7,9 +6,9 @@ interface RightSidebarProps {
   onCollapse?: () => void
 }
 
-export const RightSidebar: FC<RightSidebarProps> = ({ onCollapse }) => {
+export const RightSidebar = ({ onCollapse }: RightSidebarProps) => {
   return (
-    <div className="h-full py-4 px-6 overflow-y-auto custom-scrollbar group/sidebar relative">
+    <div className="h-full py-4 px-6 overflow-y-auto overflow-x-hidden custom-scrollbar group/sidebar relative min-w-[260px]">
       <CurrentPlaylist onCollapse={onCollapse} />
       <AboutArtist />
       {/* <Credits /> */}

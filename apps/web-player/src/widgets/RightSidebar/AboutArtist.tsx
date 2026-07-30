@@ -1,14 +1,16 @@
 'use client'
 
-import { selectCurrentTrack } from '@entities/Player'
-import { useAppSelector } from '@shared/hooks'
+import { selectCurrentTrack, usePlayerStore } from '@entities/Player'
 import { useArtist } from '@shared/hooks/useArtist'
+import {
+  getArtistAvatarUrl,
+  getArtistBackgroundUrl,
+} from '@shared/utils/mediaUrl'
 import { Typography } from '@spotify/ui-react'
 import Image from 'next/image'
-import type { FC } from 'react'
 
-export const AboutArtist: FC = () => {
-  const currentTrack = useAppSelector(selectCurrentTrack)
+export const AboutArtist = () => {
+  const currentTrack = usePlayerStore(selectCurrentTrack)
   const { data: artist, isLoading } = useArtist(currentTrack?.artistId)
 
   if (!currentTrack?.artistId) {
@@ -19,17 +21,11 @@ export const AboutArtist: FC = () => {
     return null
   }
 
-  const avatarUrl = artist.avatar?.startsWith('http')
-    ? artist.avatar
-    : artist.avatar
-      ? `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '')}/static/artists/avatars/${artist.avatar}`
-      : '/images/default-avatar.jpg'
-
-  const backgroundUrl = artist.backgroundImage?.startsWith('http')
-    ? artist.backgroundImage
-    : artist.backgroundImage
-      ? `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '')}/static/artists/backgrounds/${artist.backgroundImage}`
-      : avatarUrl
+  const avatarUrl = getArtistAvatarUrl(artist.avatar)
+  const backgroundUrl = getArtistBackgroundUrl(
+    artist.backgroundImage,
+    artist.avatar,
+  )
 
   return (
     <div className="relative bg-surface rounded-lg overflow-hidden mt-4">

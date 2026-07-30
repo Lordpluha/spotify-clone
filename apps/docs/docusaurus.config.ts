@@ -47,8 +47,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl:
-            'https://github.com/Lordpluha/spotify-clone/tree/develop/apps/docs/',
+          editUrl: 'https://github.com/Lordpluha/spotify-clone/tree/develop/apps/docs/',
         },
         blog: {
           showReadingTime: true,
@@ -56,8 +55,7 @@ const config: Config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl:
-            'https://github.com/Lordpluha/spotify-clone/tree/develop/apps/docs/',
+          editUrl: 'https://github.com/Lordpluha/spotify-clone/tree/develop/apps/docs/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -121,8 +119,8 @@ const config: Config = {
           title: 'Applications',
           items: [
             {
-              label: 'Web App',
-              to: '/docs/applications/web/overview',
+              label: 'Web Player',
+              to: '/docs/applications/web-player/overview',
             },
             {
               label: 'Mobile App',

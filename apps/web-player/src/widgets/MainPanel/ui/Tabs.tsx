@@ -1,7 +1,6 @@
 'use client'
 
 import { cn } from '@spotify/ui-react'
-import type { FC } from 'react'
 import { useState } from 'react'
 
 interface Tab {
@@ -14,7 +13,7 @@ interface TabsProps {
   onTabChange?: (id: string) => void
 }
 
-export const Tabs: FC<TabsProps> = ({ tabs, onTabChange }) => {
+export const Tabs = ({ tabs, onTabChange }: TabsProps) => {
   const [activeTab, setActiveTab] = useState(tabs[0]?.id || '')
 
   return (
@@ -24,8 +23,8 @@ export const Tabs: FC<TabsProps> = ({ tabs, onTabChange }) => {
           className={cn(
             'px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap',
             activeTab === tab.id
-              ? 'bg-white text-black'
-              : 'bg-black-800 text-white hover:bg-gray-600/50',
+              ? 'bg-text text-background'
+              : 'bg-surface text-text hover:bg-surface-hover',
           )}
           key={tab.id}
           onClick={() => {
