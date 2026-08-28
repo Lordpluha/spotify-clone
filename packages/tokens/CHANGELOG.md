@@ -1,6 +1,6 @@
-# @spotify/ui-react
+# @spotify/tokens
 
-## 0.1.0
+## 1.1.0
 
 ### Minor Changes
 
@@ -24,17 +24,3 @@
   step down across the bold range restore the intended feel without touching the
   dark theme. Body copy sits on a soft graphite rather than near-black, and the
   profile avatar's surround follows the theme instead of staying a dark disc.
-
-### Patch Changes
-
-- a57b74d: The `HoverCard` primitive ships with the coverage every other component in the
-  package has: unit, integration, snapshot and screenshot specs plus a Storybook
-  entry. It previously exported only the component and its barrel, so its
-  `asChild` contract — which throws on anything but a single element — was
-  untested.
-
-## 0.0.2
-
-### Patch Changes
-
-- 7aaa0f4: Fix authorization and private playlist exposure, make cache fallbacks safe, repair auth request retries and media URLs, and restore Base UI wrapper compatibility.
