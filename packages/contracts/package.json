@@ -5,7 +5,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "gen:api": "tsx src/scripts/fetch-openapi.ts"
+    "gen:api": "tsx src/scripts/fetch-openapi.ts",
+    "check-types": "tsc --noEmit"
   },
   "exports": {
     ".": "./src/index.ts",
@@ -15,6 +16,7 @@
   "author": "Lordpluha",
   "license": "MIT",
   "dependencies": {
+    "openapi-typescript": "^7.13.0",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   },

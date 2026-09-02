@@ -1,7 +1,7 @@
 # Multi-stage Dockerfile для Web (Next.js)
 
 # Stage 1: Base
-FROM node:22-alpine AS base
+FROM node:24-alpine AS base
 ENV PNPM_HOME=/pnpm
 ENV PATH=$PNPM_HOME:$PATH
 RUN corepack enable && corepack prepare pnpm@10.27.0 --activate && pnpm config set store-dir /pnpm/store
@@ -16,12 +16,9 @@ COPY packages/ui-react/package.json ./packages/ui-react/
 COPY packages/svgr/package.json ./packages/svgr/
 COPY packages/svgr/bin ./packages/svgr/bin
 COPY packages/vite-svgr/package.json ./packages/vite-svgr/
-COPY packages/tokens/package.json ./packages/tokens/
-COPY packages/tokens-generator/package.json ./packages/tokens-generator/
-COPY packages/tokens-generator/bin ./packages/tokens-generator/bin
 COPY packages/contracts/package.json ./packages/contracts/
 COPY turbo.json ./
-RUN pnpm install --frozen-lockfile
+RUN SKIP_GRAPHIFY_INSTALL=1 SKIP_RTK_INSTALL=1 pnpm install --frozen-lockfile
 
 # Stage 3: Development
 FROM base AS development
@@ -36,8 +33,16 @@ CMD ["pnpm", "--filter", "@spotify/web-player", "run", "dev"]
 # Stage 4: Build
 FROM base AS build
 ARG NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_SITE_URL
+ARG API_URL
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+ENV NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
+ENV API_URL=${API_URL}
 ENV NODE_ENV=production
+# This image is the deployable artifact, so the deployment URLs above are
+# demanded here rather than on every `next build`: lint, typecheck and E2E runs
+# legitimately have no canonical origin to give.
+ENV ENFORCE_DEPLOY_ENV=1
 
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY --from=dependencies /pnpm/store /pnpm/store
@@ -57,7 +62,7 @@ COPY scripts ./scripts
 COPY apps/web-player/package.json ./apps/web-player/
 COPY packages/ui-react/package.json ./packages/ui-react/
 COPY packages/contracts/package.json ./packages/contracts/
-RUN pnpm install --prod --frozen-lockfile
+RUN SKIP_GRAPHIFY_INSTALL=1 SKIP_RTK_INSTALL=1 pnpm install --prod --frozen-lockfile
 
 # Stage 6: Production
 FROM base AS production
@@ -68,6 +73,7 @@ COPY --from=prod-dependencies /app/apps/web-player/node_modules ./apps/web-playe
 COPY --from=build /app/apps/web-player/.next ./apps/web-player/.next
 COPY --from=build /app/apps/web-player/public ./apps/web-player/public
 COPY apps/web-player/next.config.ts ./apps/web-player/
+COPY apps/web-player/env.schema.ts ./apps/web-player/
 COPY apps/web-player/package.json ./apps/web-player/
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 

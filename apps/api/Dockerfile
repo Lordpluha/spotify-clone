@@ -1,7 +1,7 @@
 # Multi-stage Dockerfile для API (NestJS + Prisma)
 
 # Stage 1: Base
-FROM node:22-alpine AS base
+FROM node:24-alpine AS base
 ARG DATABASE_URL=postgresql://admin:admin@postgres:5432/spotify
 ARG SHADOW_DATABASE_URL=postgresql://admin:admin@postgres:5432/spotify_shadow
 RUN corepack enable && corepack prepare pnpm@10.27.0 --activate
@@ -17,7 +17,7 @@ COPY packages/converter/bin ./packages/converter/bin
 COPY packages/contracts/package.json ./packages/contracts/
 COPY packages/ncs-parser/package.json ./packages/ncs-parser/
 COPY turbo.json ./
-RUN pnpm install --frozen-lockfile
+RUN SKIP_GRAPHIFY_INSTALL=1 SKIP_RTK_INSTALL=1 pnpm install --frozen-lockfile
 
 # Stage 3: Development
 FROM base AS development
@@ -50,7 +50,7 @@ COPY packages/converter/package.json ./packages/converter/
 COPY packages/converter/bin ./packages/converter/bin
 COPY packages/contracts/package.json ./packages/contracts/
 COPY packages/ncs-parser/package.json ./packages/ncs-parser/
-RUN pnpm install --prod --frozen-lockfile
+RUN SKIP_GRAPHIFY_INSTALL=1 SKIP_RTK_INSTALL=1 pnpm install --prod --frozen-lockfile
 
 # Stage 6: Production
 FROM base AS production
@@ -79,5 +79,5 @@ USER spotifyapi
 
 EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-    CMD node -e "require('http').get('http://localhost:3000/api/v1/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
+    CMD node -e "require('http').get('http://localhost:3000/api/v1/health/ready', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
 CMD ["node", "apps/api/dist/main.js"]
