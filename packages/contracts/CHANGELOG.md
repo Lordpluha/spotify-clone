@@ -1,6 +1,6 @@
-# @bitrate/converter
+# @bitrate/contracts
 
-## 2.0.0
+## 1.0.0
 
 ### Major Changes
 
@@ -10,7 +10,7 @@
   match. Documentation that narrates the removed `@spotify/tokens` and `@spotify/tokens-generator`
   packages kept the original names, because those packages never existed under the new namespace.
 
-### Minor Changes
+### Patch Changes
 
 - abe3615: `gen:api` now formats what it writes. `astToString` emits the TypeScript
   printer's own style — semicolons and a four-space indent — while the committed
@@ -22,9 +22,3 @@
 
   The converter also exposes its CMAF and MP4 index helpers as package exports,
   and its test suite runs in CI alongside the API that consumes it.
-
-## 1.1.0
-
-### Minor Changes
-
-- eedc147: Add adaptive HLS audio variants, resilient hls.js playback, and an atomic BullMQ conversion pipeline with versioned jobs, retries, FFmpeg timeouts, stale-job protection, cleanup, and processing statuses.
