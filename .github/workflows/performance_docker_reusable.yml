@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # `install: false` is enough: @bitrate/performance-test declares no dependencies, so
       # `pnpm --filter ... run load:api` only needs the workspace on disk to shell out to k6.
@@ -113,7 +113,7 @@ jobs:
 
       - name: Upload results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: k6-docker-results
           path: |

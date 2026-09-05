@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Setup Node.js and pnpm
         uses: ./.github/actions/setup-node-pnpm
@@ -31,13 +31,13 @@ jobs:
           NEXT_PUBLIC_SITE_URL: https://spotify-clone-web-olive.vercel.app
 
       - name: Upload bundle report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: bundle-analysis
           path: apps/web-player/.next/analyze
 
       - name: Compare bundle sizes
-        uses: preactjs/compressed-size-action@v2
+        uses: preactjs/compressed-size-action@v3
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           pattern: 'apps/web-player/.next/static/**/*.js'
@@ -47,7 +47,7 @@ jobs:
 
       - name: Restore repository state
         if: always()
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.sha }}
           fetch-depth: 1
